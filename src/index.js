@@ -21,7 +21,7 @@ const app = express();
 app.use('/graphql', json(), graphqlExpress({ schema }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: `/${ENDPOINT}` }));
 
-models.sequelize.sync({ force: true }).then(() => {
+models.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`Go to http://localhost:${PORT}/graphiql to run queries!`);
   });

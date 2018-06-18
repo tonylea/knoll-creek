@@ -21,10 +21,24 @@ const sequelize = new Sequelize(database, username, password, {
 });
 
 const models = {
-  Channel: sequelize.import('./Channel'),
-  Message: sequelize.import('./Message'),
-  Team: sequelize.import('./Team'),
-  User: sequelize.import('./User'),
+  Clusters: sequelize.import('./Clusters'),
+  CommonIssues: sequelize.import('./CommonIssues'),
+  CompanyDetails: sequelize.import('./CompanyDetails'),
+  CompanyDirectContacts: sequelize.import('./CompanyDirectContacts'),
+  DatabaseDetails: sequelize.import('./DatabaseDetails'),
+  DayOfWeek: sequelize.import('./DayOfWeek'),
+  ExternalSupportHours: sequelize.import('./ExternalSupportHours'),
+  InternalSupportHours: sequelize.import('./InternalSupportHours'),
+  IPAddress: sequelize.import('./IPAddress'),
+  Location: sequelize.import('./Location'),
+  OperatingSystem: sequelize.import('./OperatingSystem'),
+  RequiredServices: sequelize.import('./RequiredServices'),
+  Servers: sequelize.import('./Servers'),
+  SqlInstance: sequelize.import('./SqlInstance'),
+  Status: sequelize.import('./Status'),
+  SystemAlias: sequelize.import('./SystemAlias'),
+  SystemDependencies: sequelize.import('./SystemDependencies'),
+  SystemDetails: sequelize.import('./SystemDetails'),
 };
 
 Object.keys(models).forEach(modelName => {
