@@ -1,48 +1,30 @@
-import dotenv from 'dotenv';
 import Sequelize from 'sequelize';
 
-dotenv.config();
+require('dotenv').config();
 
-const database = process.env.DB_NAME;
-const username = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
-
-const sequelize = new Sequelize(database, username, password, {
-  host: process.env.DB_INSTANCE,
-  dialect: process.env.DB_DIALECT,
-  operatorsAliases: false,
-
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
-  },
-});
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_INSTANCE,
+    dialect: process.env.DB_DIALECT,
+    define: {
+      underscored: true
+    }
+  }
+);
 
 const models = {
-  Clusters: sequelize.import('./Clusters'),
-  CommonIssues: sequelize.import('./CommonIssues'),
-  CompanyDetails: sequelize.import('./CompanyDetails'),
-  CompanyDirectContacts: sequelize.import('./CompanyDirectContacts'),
-  DatabaseDetails: sequelize.import('./DatabaseDetails'),
-  DayOfWeek: sequelize.import('./DayOfWeek'),
-  ExternalSupportHours: sequelize.import('./ExternalSupportHours'),
-  InternalSupportHours: sequelize.import('./InternalSupportHours'),
-  IPAddress: sequelize.import('./IPAddress'),
-  Location: sequelize.import('./Location'),
-  OperatingSystem: sequelize.import('./OperatingSystem'),
-  RequiredServices: sequelize.import('./RequiredServices'),
-  Servers: sequelize.import('./Servers'),
-  SqlInstance: sequelize.import('./SqlInstance'),
-  Status: sequelize.import('./Status'),
-  SystemAlias: sequelize.import('./SystemAlias'),
-  SystemDependencies: sequelize.import('./SystemDependencies'),
-  SystemDetails: sequelize.import('./SystemDetails'),
+  Company: sequelize.import('./company'),
+  DayOfWeek: sequelize.import('./dayOfWeek'),
+  Location: sequelize.import('./location'),
+  OperatingSystem: sequelize.import('./operatingSystem'),
+  Status: sequelize.import('./status')
 };
 
 Object.keys(models).forEach(modelName => {
-  if (models[modelName].associate) {
+  if ('associate' in models[modelName]) {
     models[modelName].associate(models);
   }
 });

@@ -1,28 +1,46 @@
-import dotenv from 'dotenv';
 import express from 'express';
-import { json } from 'body-parser';
+import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
-import typeDefs from './schema';
-import resolvers from './resolvers';
+import path from 'path';
+import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
+import cors from 'cors';
+
 import models from './models';
 
-dotenv.config();
+require('dotenv').config();
 
-const PORT = process.env.SERVER_PORT;
-const ENDPOINT = process.env.GRAPHQL_ENDPOINT;
-// Put together a schema
+const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './schema')));
+const resolvers = mergeResolvers(
+  fileLoader(path.join(__dirname, './resolvers'))
+);
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers,
+  resolvers
 });
 
-const app = express();
-app.use('/graphql', json(), graphqlExpress({ schema }));
-app.use('/graphiql', graphiqlExpress({ endpointURL: `/${ENDPOINT}` }));
+const port = process.env.PORT;
+const graphqlEndpoint = `/${process.env.GRAPHQL_ENDPOINT}`;
+const graphiqlEndpoint = `/${process.env.GRAPHIQL_ENDPOINT}`;
 
-models.sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`Go to http://localhost:${PORT}/graphiql to run queries!`);
-  });
+const app = express();
+app.use(cors('*'));
+app.use(
+  graphqlEndpoint,
+  bodyParser.json(),
+  graphqlExpress({
+    schema,
+    context: {
+      models,
+      user: {
+        id: 1
+      }
+    }
+  })
+);
+app.use(graphiqlEndpoint, graphiqlExpress({ endpointURL: graphqlEndpoint }));
+
+models.sequelize.sync(/* { force: true } */).then(() => {
+  app.listen(port);
+  console.log(`Go to http://localhost:${port}/graphiql to run queries!`); // eslint-disable-line no-console
 });

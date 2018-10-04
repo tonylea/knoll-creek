@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
-  const Clusters = sequelize.define('Clusters', {
-    hostname: {
+  const IPAddress = sequelize.define('ipAddress', {
+    ipAddress: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -8,12 +8,11 @@ export default (sequelize, DataTypes) => {
     notes: DataTypes.TEXT,
   });
 
-  Clusters.associate = models => {
-    Clusters.belongsToMany(models.Servers, {
-      through: 'ClusterDependencies',
+  IPAddress.associate = models => {
+    IPAddress.belongsTo(models.Servers, {
       foreignKey: { name: 'serverId', allowNull: false },
     });
   };
 
-  return Clusters;
+  return IPAddress;
 };

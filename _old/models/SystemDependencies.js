@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const SystemDependencies = sequelize.define('SystemDependencies', {
+  const SystemDependencies = sequelize.define('systemDependencies', {
     notes: DataTypes.TEXT,
   });
 

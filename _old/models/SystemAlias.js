@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const SystemAlias = sequelize.define('SystemAlias', {
+  const SystemAlias = sequelize.define('systemAlias', {
     alias: {
       type: DataTypes.STRING,
       allowNull: false,

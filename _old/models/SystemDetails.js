@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const SystemDetails = sequelize.define('SystemDetails', {
+  const SystemDetails = sequelize.define('systemDetails', {
     systemName: {
       type: DataTypes.STRING,
       unique: true,

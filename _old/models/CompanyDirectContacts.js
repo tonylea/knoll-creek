@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const CompanyDirectContacts = sequelize.define('CompanyDirectContacts', {
+  const CompanyDirectContacts = sequelize.define('companyDirectContacts', {
     givenName: {
       type: DataTypes.STRING,
       allowNull: false,

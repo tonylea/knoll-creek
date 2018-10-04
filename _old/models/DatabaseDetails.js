@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const DatabaseDetails = sequelize.define('DatabaseDetails', {
+  const DatabaseDetails = sequelize.define('databaseDetails', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,

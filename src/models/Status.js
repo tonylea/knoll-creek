@@ -1,8 +1,7 @@
 export default (sequelize, DataTypes) => {
-  const Status = sequelize.define('Status', {
+  const Status = sequelize.define('status', {
     status: {
       type: DataTypes.STRING,
-      allowNull: false,
       unique: true,
     },
   });

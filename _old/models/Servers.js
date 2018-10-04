@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Servers = sequelize.define('Servers', {
+  const Servers = sequelize.define('servers', {
     hostname: {
       type: DataTypes.STRING,
       allowNull: false,

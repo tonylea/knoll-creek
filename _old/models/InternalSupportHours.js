@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const InternalSupportHours = sequelize.define('InternalSupportHours', {
+  const InternalSupportHours = sequelize.define('internalSupportHours', {
     startTime: {
       type: DataTypes.INTEGER,
       allowNull: false,

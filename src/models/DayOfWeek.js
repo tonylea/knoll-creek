@@ -1,15 +1,10 @@
 export default (sequelize, DataTypes) => {
-  const DayOfWeek = sequelize.define('DayOfWeek', {
-    dayInt: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true,
-    },
+  const DayOfWeek = sequelize.define('dayOfWeek', {
     dayName: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-    },
+      unique: true
+    }
   });
 
   return DayOfWeek;

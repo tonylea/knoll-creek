@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const SqlInstance = sequelize.define('SqlInstance', {
+  const SqlInstance = sequelize.define('sqlInstance', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,

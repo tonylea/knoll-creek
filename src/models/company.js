@@ -1,23 +1,23 @@
 export default (sequelize, DataTypes) => {
-  const CompanyDetails = sequelize.define('CompanyDetails', {
-    businessName: {
+  const Company = sequelize.define('company', {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: true
     },
     mainPhone: {
       type: DataTypes.STRING,
-      unique: true,
+      unique: true
     },
     email: {
       type: DataTypes.STRING,
-      unique: true,
+      unique: true
     },
     website: {
       type: DataTypes.STRING,
-      unique: true,
-    },
+      unique: true
+    }
   });
 
-  return CompanyDetails;
+  return Company;
 };

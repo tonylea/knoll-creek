@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const CommonIssues = sequelize.define('CommonIssues', {
+  const CommonIssues = sequelize.define('commonIssues', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,

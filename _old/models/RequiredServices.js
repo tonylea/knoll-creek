@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const SqlInstance = sequelize.define('SqlInstance', {
+  const RequiredServices = sequelize.define('requiredServices', {
     service: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -8,5 +8,5 @@ export default (sequelize, DataTypes) => {
     notes: DataTypes.TEXT,
   });
 
-  return SqlInstance;
+  return RequiredServices;
 };
