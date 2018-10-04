@@ -16,11 +16,24 @@ const sequelize = new Sequelize(
 );
 
 const models = {
+  Clusters: sequelize.import('./clusters'),
   Company: sequelize.import('./company'),
+  CommonIssues: sequelize.import('./commonIssues'),
+  CompanyDirectContacts: sequelize.import('./companyDirectContacts'),
+  DatabaseDetails: sequelize.import('./catabaseDetails'),
   DayOfWeek: sequelize.import('./dayOfWeek'),
+  ExternalSupportHours: sequelize.import('./externalSupportHours'),
+  InternalSupportHours: sequelize.import('./internalSupportHours'),
+  IPAddress: sequelize.import('./ipAddress'),
   Location: sequelize.import('./location'),
   OperatingSystem: sequelize.import('./operatingSystem'),
-  Status: sequelize.import('./status')
+  RequiredServices: sequelize.import('./requiredServices'),
+  Servers: sequelize.import('./servers'),
+  SqlInstance: sequelize.import('./sqlInstance'),
+  Status: sequelize.import('./status'),
+  SystemAlias: sequelize.import('./systemAlias'),
+  SystemDependencies: sequelize.import('./systemDependencies'),
+  SystemDetails: sequelize.import('./systemDetails')
 };
 
 Object.keys(models).forEach(modelName => {
