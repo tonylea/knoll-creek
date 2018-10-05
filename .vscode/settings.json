@@ -1,5 +1,6 @@
 {
-  "cSpell.words": [
-    "Guid"
-  ]
+  "cSpell.words": ["Guid", "Proxying", "Styleguidist"],
+  "files.associations": {
+    "packages/client/src/*.js": "javascriptreact"
+  }
 }
